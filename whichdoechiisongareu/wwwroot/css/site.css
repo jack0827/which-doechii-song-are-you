@@ -1,0 +1,271 @@
+:root {
+    --beige: #D7D5C2;
+    --black: #464646;
+    --white: #f7f7f7;
+    --green: #6F8C6E;
+    --darkgreen: #516850;
+    --result-beige: #BDB890;
+    --result-green: #8F9964;
+    --result-darkgreen: #405D3F;
+    --def-name: #7E7B60;
+}
+
+.regular-text {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+#tap-anywhere {
+    position: absolute;
+    top: 53%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.instrument-serif-regular-italic {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.sway-img {
+    transition: transform 1s ease-in-out;
+}
+
+html {
+    font-size: 14px;
+    background: var(--beige);
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    #dc-up,
+    #dc-down {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    center, .input-group {
+        height: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: var(--beige);
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--beige);
+}
+
+#dc-up {
+    margin-right: 20%;
+    position: absolute;
+    top: 10%;
+}
+
+#dc-down {
+    margin-left: 20%;
+    position: absolute;
+    bottom: 10%;
+}
+
+#app-logo {
+    top: 35%;
+    position: absolute;
+
+}
+
+.sign-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    -webkit-justify-content: inherit;
+    justify-content: inherit;
+    padding: 0px;
+    gap: 5px;
+    position: relative;
+    width: 350px;
+    height: 410px;
+}
+
+.sign-btn {
+    width: 30%;
+    object-fit: cover;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform 0.2s ease, filter 0.2s ease;
+    cursor: pointer;
+}
+
+.sign-btn:hover, .sign-btn.selected {
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.default-btn {
+    padding: 5px;
+    width: 140px;
+    height: 40px;
+    border-radius: 10px;
+    position: absolute;
+    top: 80%;
+    background: var(--green);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    outline: none;
+    border: none;
+    font-family: 'Instrument Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+#app-btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+#app-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: background 1s ease;
+    }
+
+.default-btn:hover {
+    background: var(--darkgreen);
+}
+
+#if-name {
+    width: 235px;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 0.2em 0.5em;
+    background: var(--white);
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+#if-name:focus {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.input-group {
+    align-items: inherit;
+    justify-content: inherit;
+    display: inherit;
+    flex-direction: inherit;
+    gap: 1.5rem;
+}
+
+.vibe-card {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 480px;
+    background: var(--result-beige);
+    border-radius: 15px;
+    font-family: 'Instrument Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--black);
+}
+
+.color-btn {
+    margin-top: 20px;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    border: 2px solid transparent;
+    transition: border 0.1s linear;
+    cursor: pointer;
+}
+
+.color-btn.selected {
+    border: 2px solid var(--white);
+
+}
+
+#card-name{
+    color: var(--def-name);
+    position: absolute;
+    top: 40%;
+    z-index: 1;
+    font-size: 30px;
+}
+
+#card-namebg {
+    position: absolute;
+    top: 38%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.1rem;
+    position: absolute;
+    width: 240px;
+    bottom: 40%;
+}
+
+#card-prompt{
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+#card-song {
+    margin: 0;
+    padding: 0;
+    font-size: 27px;
+    line-height: 30px;
+    text-align: center;
+}
+
+
