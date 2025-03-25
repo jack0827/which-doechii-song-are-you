@@ -1,6 +1,6 @@
 :root {
     --beige: #D7D5C2;
-    --black: #464646;
+    --black: #303030;
     --white: #f7f7f7;
     --green: #6F8C6E;
     --darkgreen: #516850;
@@ -217,12 +217,14 @@ body {
 
 .color-btn {
     margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
     width: 20px;
     height: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 100%;
     border: 2px solid transparent;
-    transition: border 0.1s linear;
+    transition: border 0.5s linear;
     cursor: pointer;
 }
 
@@ -231,17 +233,24 @@ body {
 
 }
 
+#card-img {
+    position: absolute;
+    top: 20%;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
 #card-name{
     color: var(--def-name);
     position: absolute;
-    top: 40%;
+    top: 38.5%;
     z-index: 1;
-    font-size: 30px;
+    font-size: 32px;
+    line-height: 32px;
 }
 
 #card-namebg {
     position: absolute;
-    top: 38%;
+    top: 37.3%;
 }
 
 .card-body {
@@ -249,23 +258,41 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.1rem;
+    gap: 0.5rem;
     position: absolute;
-    width: 240px;
-    bottom: 40%;
+    width: 260px;
+    top: 42%;
 }
 
-#card-prompt{
+#card-prompt {
     text-transform: uppercase;
-    margin: 5px;
+    margin: 10px 0 0 0;
+    font-size: 15px;
 }
 
 #card-song {
-    margin: 0;
+    margin: auto;
     padding: 0;
     font-size: 27px;
     line-height: 30px;
+    max-width: 260px;
     text-align: center;
 }
+
+#card-logo {
+    position: absolute;
+    bottom: 34%;
+    width: 70px;
+    justify-content: center;
+    -webkit-align-items: inherit;
+    align-items: inherit;
+}
+
+#card-content {
+    border-top: 1px solid var(--black);
+    margin: 0 0 5px 0;
+    padding: 10px 0 0 0;
+}
+
 
 

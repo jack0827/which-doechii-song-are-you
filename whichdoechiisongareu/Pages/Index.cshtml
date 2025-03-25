@@ -39,24 +39,25 @@
     </div>
     <button class="default-btn" id="app-btn">see results</button>
 
-    <div id="vibe-card" class="vibe-card">
-        <h2 id="card-title"></h2>
+    <div id="vibe-card" class="vibe-card" style="display: none;">
+        <img src="/images/doechii-star.svg" id="card-img" />
         <img src="/images/username.svg"/  id="card-namebg">
         <h2 class="regular-text" id="card-name">Name</h2>
         <div class="card-body">
             <p id="card-prompt">Your Doechii song is</p>
-            <h2 class="regular-text" id="card-song">⋆ <i>alligator bites never heal</i> ⋆</h2>
+            <h2 class="regular-text" id="card-song"></h2>
             <p id="card-content"></p>
         </div>
+        <img src="images/app-logo.svg" id="card-logo" />
     </div>
 
-    <div class="color-picker">
+    <div class="color-picker" style="display:none;">
         <button class="color-btn selected" data-bg="#BDB890" data-title="#7E7B60" data-text="#303030" style="background: var(--result-beige);"></button>
         <button class="color-btn" data-bg="#8F9964" data-title="#8F9964" data-text="#f7f7f7" style="background:var(--result-green);"></button>
         <button class="color-btn" data-bg="#405D3F" data-title="#405D3F" data-text="#f7f7f7" style="background:var(--result-darkgreen);"></button>
     </div>
 
-    <button class="default-btn" id="download-btn">Download</button>
+    <button class="default-btn" id="download-btn" style="display:none;">Download</button>
     
 </div>
 

@@ -3,47 +3,169 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    $("#card-title").text(`${name}`);
-    $("#card-content").text(`You are Denial is a River because pisces often navigate complex emotional currents`);
 
-    let selectedBG = '#BDB890';
-    let selectedName = '#7E7B60';
-    let selectedText = '#303030';
-    // Color change on button click
-    $(".color-btn").click(function () {
-        $(".color-btn").removeClass("selected");
+        // on start
 
-        selectedBG = $(this).data("bg");
-        selectedName= $(this).data("title");
-        selectedText = $(this).data("text");
+        $('#dc-up').show(800);
+        $('#dc-down').show(800);
+        $('#app-logo').show(1000);
+        $('#tap-anywhere').show(500);
+        $('.footer').fadeIn(2200);
 
-        $(this).addClass("selected");
-        $(".vibe-card").css({ "background-color": selectedBG, "color": selectedText });
-        $("#card-song").css("color", selectedText);
-        $("#card-name").css( "color", selectedName);
-    });
+        const text = "tap anywhere to start";
+        let i = 0;
 
-    $('#download-btn').click(function () {
-        const card = document.querySelector("#vibe-card");
+        function type() {
+            if (i < text.length) {
+                $("#tap-anywhere").append(text.charAt(i));
+                i++;
+                setTimeout(type, 50); // typing speed in ms
+            }
+        }
 
-        // Store original border radius
-        const originalBorderRadius = card.style.borderRadius;
+        type();
 
-        // Temporarily remove border radius
-        card.style.borderRadius = "0";
+        function swayLeft() {
+            $('.sway-left').css('transform', 'rotate(3deg)');
+            setTimeout(() => {
+                $('.sway-left').css('transform', 'rotate(-3deg)');
+            }, 700);
+            setTimeout(swayLeft, 1400);
+        }
 
-        html2canvas(card, {
-            scale: 4,
-            backgroundColor: selectedBG
-        }).then(canvas => {
-            // Revert border radius back
-            card.style.borderRadius = originalBorderRadius;
+        function swayRight() {
+            $('.sway-right').css('transform', 'rotate(-3deg)');
+            setTimeout(() => {
+                $('.sway-right').css('transform', 'rotate(3deg)');
+            }, 700);
+            setTimeout(swayRight, 1400);
+        }
 
-            var link = document.createElement('a');
-            link.download = 'vibe-card.png';
-            link.href = canvas.toDataURL("image/png");
-            link.click();
+        swayLeft();
+        swayRight();
+
+        // on start + mouse down events
+
+        const sound = document.getElementById("click-sound");
+
+    $(document).on("mousedown", function (event) {
+
+        if ($("#dc-up").is(":visible")) {
+            $("#dc-up").hide(1000);
+            $("#dc-down").hide(1000);
+            $("#tap-anywhere").hide(1000);
+            $("#app-logo").animate({ width: '150px', top: '60' }, 500);
+            $(".input-group").show();
+        }
+
+            sound.currentTime = 0;
+            sound.play();
         });
-    });
+
+        // input name and star sign selection
+
+        let selectedSign = "";
+
+        // Handle star sign image click
+        $(".sign-btn").on("click", function () {
+            $(".sign-btn").removeClass("selected");
+            $(this).addClass("selected");
+            selectedSign = $(this).data("value");
+
+            checkInputAndShowButton();
+        });
+
+        // Handle name input changes
+        $("#if-name").on("input", function () {
+            checkInputAndShowButton();
+        });
+
+        // Show the app button if both name and sign are filled
+        function checkInputAndShowButton() {
+            const name = $("#if-name").val().trim();
+            if (name !== "" && selectedSign !== "") {
+                $("#app-btn").addClass("visible");
+            } else {
+                $("#app-btn").removeClass("visible");
+            }
+        }
+
+        // Handle the app button click
+        $("#app-btn").on("click", function () {
+            $("#app-btn").fadeOut();
+            $(".input-group").fadeOut();
+
+            const name = $("#if-name").val().trim();
+
+            if (name && selectedSign) {
+                $.ajax({
+                    type: "POST",
+                    url: "?handler=GenerateVibe",
+                    contentType: "application/json",
+                    data: JSON.stringify({ Name: name, StarSign: selectedSign }),
+                    success: function (response) {
+
+                        let aiResponse = response.trim();
+                        let match = aiResponse.match(/You are (.*?) because/);
+                        let song = match ? match[1].trim() : "Unknown Song";
+
+                        $("#card-name").text(`${name}`);
+                        $("#card-song").html(`⋆ <i>${song}</i> ⋆`);
+                        $("#card-content").text(response);
+                        $("#vibe-card").fadeIn();
+                        $("#download-btn").fadeIn();
+                        $(".color-picker").fadeIn();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("XHR:", xhr);
+                        console.error("Status:", status);
+                        console.error("Error:", error);
+                        alert("Something went wrong. Check console.");
+                    }
+                });
+            }
+        });
+
+        let selectedBG = '#BDB890';
+        let selectedName = '#7E7B60';
+        let selectedText = '#303030';
+        // Color change on button click
+        $(".color-btn").click(function () {
+            $(".color-btn").removeClass("selected");
+
+            selectedBG = $(this).data("bg");
+            selectedName = $(this).data("title");
+            selectedText = $(this).data("text");
+
+            $(this).addClass("selected");
+            $(".vibe-card").css({ "background-color": selectedBG, "color": selectedText });
+            $("#card-song").css("color", selectedText);
+            $("#card-content").css("border-color", selectedText);
+            $("#card-name").css("color", selectedName);
+        });
+
+        $('#download-btn').click(function () {
+            const card = document.querySelector("#vibe-card");
+
+            // Store original border radius
+            const originalBorderRadius = card.style.borderRadius;
+
+            // Temporarily remove border radius
+            card.style.borderRadius = "0";
+
+            html2canvas(card, {
+                scale: 4,
+                backgroundColor: selectedBG
+            }).then(canvas => {
+                // Revert border radius back
+                card.style.borderRadius = originalBorderRadius;
+
+                var link = document.createElement('a');
+                link.download = 'doechii-vibe-card.png';
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        });
 });
+
 
