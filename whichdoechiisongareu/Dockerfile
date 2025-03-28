@@ -2,11 +2,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy the project files
+# Copy and restore dependencies
 COPY *.csproj ./
 RUN dotnet restore
 
-# Copy everything else and build the app
+# Copy the remaining files and build the app
 COPY . ./
 RUN dotnet publish -c Release -o /out
 
@@ -16,5 +16,9 @@ WORKDIR /app
 COPY --from=build /out .
 
 # Expose port 8080 for Render
+EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
+
+# Run the app
 CMD ["dotnet", "whichdoechiisongareu.dll"]
+
