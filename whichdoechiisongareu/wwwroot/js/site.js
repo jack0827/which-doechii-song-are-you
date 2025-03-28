@@ -87,7 +87,7 @@ $(document).ready(function () {
                 $("#app-logo").animate({ width: '150px', top: '60' }, 500);
             }
 
-            $(".input-group").show();
+            $(".input-group").fadeIn(1000);
         }
 
         sound.currentTime = 0;
@@ -123,7 +123,7 @@ $(document).ready(function () {
     $("#app-btn").on("click", function () {
         $("#app-btn").removeClass("visible");
         $(".sign-btn").removeClass("selected");
-        $(".input-group").fadeOut();
+        $(".input-group").hide();
         //  $("#loading-text").fadeIn();
         //  $("#vibe-card").hide();
         $("#app-logo").fadeOut(500);

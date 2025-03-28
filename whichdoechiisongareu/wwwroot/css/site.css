@@ -232,13 +232,13 @@ html {
         height: 90vh;
     }
 
-    .input-group{
-        align-items: inherit;
-        justify-content: inherit;
-        display: inherit;
-        flex-direction: inherit;
-        gap: 1.5rem;
-    }
+.input-group {
+    align-items: inherit;
+    justify-content: inherit;
+    display: inherit;
+    flex-direction: inherit;
+    gap: 1.5rem;
+}
 
 .btn-group {
     top: 40px;
@@ -246,25 +246,25 @@ html {
 }
 
 
-    .vibe-card {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        width: 270px;
-        height: 480px;
-        background: var(--result-beige);
-        border-radius: 15px;
-        font-family: 'Instrument Serif';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 13px;
-        line-height: 17px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: var(--black);
-    }
+.vibe-card {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    height: 480px;
+    background: var(--result-beige);
+    border-radius: 15px;
+    font-family: 'Instrument Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--black);
+}
 
     .color-btn {
         margin-top: 20px;
@@ -284,8 +284,9 @@ html {
     }
 
     #card-img {
-        position: absolute;
-        top: 20%;
+   /*   position: absolute;
+       top: 20%; */
+        
         filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
     }
 
@@ -298,7 +299,7 @@ html {
     }
 
     #card-namebg {
-        position: absolute;
+       /* position: absolute; */
     }
 
     .name {
@@ -310,25 +311,27 @@ html {
         flex-direction: column;
     }
 
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0.5rem;
-        position: absolute;
-        width: 260px;
-        top: 42%;
-    }
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    position: absolute;
+    /*  width: 260px; */
+    width: 250px;
+    height: 460px;
+}
 
     #card-prompt {
+        margin: 5px 0 0 0;
+        z-index: 1;
         text-transform: uppercase;
-        margin: 10px 0 0 0;
         font-size: 15px;
-    }
+}
 
     #card-song {
-        margin: auto;
+        margin: 80px 0 0 0;
         padding: 0;
         font-size: 27px;
         line-height: 30px;
@@ -338,7 +341,7 @@ html {
 
     #card-logo {
         position: absolute;
-        bottom: 35%;
+        bottom: 1%;
         width: 70px;
         justify-content: center;
         -webkit-align-items: inherit;
