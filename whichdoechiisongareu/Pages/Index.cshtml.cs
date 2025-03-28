@@ -37,7 +37,12 @@ public class IndexModel : PageModel
     {
         try
         {
-            var apiKey = "AIzaSyDO12HZAahU9e9QoqzWvc2sNgsoAF8xxSI";
+            var apiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                return "API key is missing. Please configure it correctly.";
+            }
             var url = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={apiKey}";
 
             var requestBody = new

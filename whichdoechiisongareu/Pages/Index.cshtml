@@ -19,8 +19,8 @@
     <img src="images/doechii-down.svg" id="dc-down" class="sway-img sway-right" style="display:none;"  />
 
     <div class="input-group" style="display:none;">
-        <input type="text" class="regular-text" id="if-name" placeholder="Enter your name" />
-        <h1 class="regular-text">And choose your star sign...</h1>
+        <input type="text" class="regular-text" id="if-name" placeholder="Enter your name" maxlength="12" />
+        <h1 class="regular-text" id="sign-title">And choose your star sign...</h1>
         <div class="sign-container">
             <img src="images/signs/aries.svg" class="sign-btn" data-value="aries"/>
             <img src="images/signs/taurus.svg" class="sign-btn" data-value="taurus" />
@@ -38,11 +38,13 @@
        
     </div>
     <button class="default-btn" id="app-btn">see results</button>
-
+    <!----<div id="loading-text" class="regular-text" style="display: none;">Generating vibe...</div>-->
     <div id="vibe-card" class="vibe-card" style="display: none;">
         <img src="/images/doechii-star.svg" id="card-img" />
-        <img src="/images/username.svg"/  id="card-namebg">
-        <h2 class="regular-text" id="card-name">Name</h2>
+        <div class="name">
+            <img src="/images/username.svg" id="card-namebg" />
+            <h2 class="regular-text" id="card-name"></h2>
+        </div>
         <div class="card-body">
             <p id="card-prompt">Your Doechii song is</p>
             <h2 class="regular-text" id="card-song"></h2>
@@ -56,8 +58,11 @@
         <button class="color-btn" data-bg="#8F9964" data-title="#8F9964" data-text="#f7f7f7" style="background:var(--result-green);"></button>
         <button class="color-btn" data-bg="#405D3F" data-title="#405D3F" data-text="#f7f7f7" style="background:var(--result-darkgreen);"></button>
     </div>
-
-    <button class="default-btn" id="download-btn" style="display:none;">Download</button>
+    <div class="btn-group" style="display:none;">
+        <button class="default-btn" id="download-btn">Download</button>
+        <button class="default-btn" id="try-btn">Try again</button>
+    </div>
+  
     
 </div>
 
