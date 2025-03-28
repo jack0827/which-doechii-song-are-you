@@ -2,17 +2,21 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy everything first
-COPY . . 
+# Copy ONLY the solution and project files first (to speed up build process)
+COPY *.sln . 
+COPY whichdoechiisongareu/*.csproj whichdoechiisongareu/
 
-# Restore only the correct project file
+# Restore dependencies
 RUN dotnet restore whichdoechiisongareu/whichdoechiisongareu.csproj
 
-# Set the working directory inside the project folder
+# Copy everything else AFTER restoring
+COPY . .
+
+# Set working directory to project folder
 WORKDIR /app/whichdoechiisongareu
 
 # Build and publish the app
-RUN dotnet publish whichdoechiisongareu.csproj -c Release -o /out
+RUN dotnet publish -c Release -o /out
 
 # Use .NET runtime to run the app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
