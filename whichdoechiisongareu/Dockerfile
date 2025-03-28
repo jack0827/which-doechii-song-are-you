@@ -6,7 +6,10 @@ WORKDIR /app
 COPY . . 
 
 # Restore only the correct project file
-RUN dotnet restore whichdoechiisongareu.csproj
+RUN dotnet restore whichdoechiisongareu/whichdoechiisongareu.csproj
+
+# Set the working directory inside the project folder
+WORKDIR /app/whichdoechiisongareu
 
 # Build and publish the app
 RUN dotnet publish whichdoechiisongareu.csproj -c Release -o /out
