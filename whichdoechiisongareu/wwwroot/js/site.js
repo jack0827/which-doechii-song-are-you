@@ -19,7 +19,7 @@ $(document).ready(function () {
         if (i < text.length) {
             $("#tap-anywhere").append(text.charAt(i));
             i++;
-            setTimeout(type, 50); // typing speed in ms
+            setTimeout(type, 50);
         }
     }
 
@@ -94,11 +94,10 @@ $(document).ready(function () {
         sound.play();
     });
 
-    // input name and star sign selection
+    // 'input name and star sign' selection events
 
     let selectedSign = "";
 
-    // Handle star sign image click
     $(".sign-btn").on("click", function () {
         $(".sign-btn").removeClass("selected");
         $(this).addClass("selected");
@@ -107,12 +106,10 @@ $(document).ready(function () {
         checkInputAndShowButton();
     });
 
-    // Handle name input changes
     $("#if-name").on("input", function () {
         checkInputAndShowButton();
     });
 
-    // Show the app button if both name and sign are filled
     function checkInputAndShowButton() {
         const name = $("#if-name").val().trim();
         if (name !== "" && selectedSign !== "") {
@@ -122,7 +119,7 @@ $(document).ready(function () {
         }
     }
 
-    // Handle the app button click
+    // 'see results' events
     $("#app-btn").on("click", function () {
         $("#app-btn").removeClass("visible");
         $(".sign-btn").removeClass("selected");
@@ -162,10 +159,12 @@ $(document).ready(function () {
         }
     });
 
+    // 'image color picker' events
+
     let selectedBG = '#BDB890';
     let selectedName = '#7E7B60';
     let selectedText = '#303030';
-    // Color change on button click
+
     $(".color-btn").click(function () {
         $(".color-btn").removeClass("selected");
 
@@ -180,20 +179,18 @@ $(document).ready(function () {
         $("#card-name").css("color", selectedName);
     });
 
+    // 'download' events
+
     $('#download-btn').click(function () {
         const card = document.querySelector("#vibe-card");
 
-        // Store original border radius
         const originalBorderRadius = card.style.borderRadius;
-
-        // Temporarily remove border radius
         card.style.borderRadius = "0";
 
         html2canvas(card, {
             scale: 4,
             backgroundColor: selectedBG
         }).then(canvas => {
-            // Revert border radius back
             card.style.borderRadius = originalBorderRadius;
 
             var link = document.createElement('a');
@@ -202,6 +199,8 @@ $(document).ready(function () {
             link.click();
         });
     });
+
+    // 'try again' events
 
     $('#try-btn').on("click", function () {
 
